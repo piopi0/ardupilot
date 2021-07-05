@@ -174,9 +174,10 @@ void AP_MotorsMatrix::output_to_motors()
             break;
     }
 
-    // convert output to PWM and send to each motor
+    // convert output to PWM and send to each motor/////////////////////////////////////////////////////////////////////////////////////////////////////////////
     for (i = 0; i < AP_MOTORS_MAX_NUM_MOTORS; i++) {
         if (motor_enabled[i]) {
+			_actuator[i] = -_actuator[i];
             rc_write(i, output_to_pwm(_actuator[i]));
         }
     }
